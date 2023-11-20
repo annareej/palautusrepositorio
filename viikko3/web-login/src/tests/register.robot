@@ -41,15 +41,24 @@ Login After Successful Registration
     Set Password  ville123
     Set Password Confirmation  ville123
     Submit Register
-    Click Link Continue to main page
+    Click Link  Continue to main page
     Click Button  Logout
-    Set Username  user
+    Set Username  test
     Set Password  ville123
     Click Button  Login
     Login Should Succeed
 
 Login After Failed Registration
 # ...
+    Set Username  uusi
+    Set Password  ville123
+    Set Password Confirmation  kalle123
+    Submit Register
+    Click Link  Login
+    Set Username  uusi
+    Set Password  ville123
+    Click Button  Login
+    Login Should Fail With Message  Invalid username or password
 
 *** Keywords ***
 Submit Register
@@ -71,3 +80,11 @@ Register Should Fail With Message
     [Arguments]  ${message}
     Register Page Should Be Open
     Page Should Contain  ${message}
+
+Login Should Fail With Message
+    [Arguments]  ${message}
+    Login Page Should Be Open
+    Page Should Contain  ${message}
+
+Login Should Succeed
+    Main Page Should Be Open
