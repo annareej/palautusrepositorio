@@ -103,14 +103,12 @@ class TestKauppa(unittest.TestCase):
         self.kauppa.lisaa_koriin(1)
         self.kauppa.tilimaksu("pekka", "12345")
 
-        #self.pankki_mock.tilisiirto.assert_called_with('pekka', 1, '12345', '33333-44455', 3)
         self.assertEqual(self.viitegeneraattori_mock.uusi.call_count, 1)
 
         self.kauppa.aloita_asiointi()
         self.kauppa.lisaa_koriin(1)
         self.kauppa.tilimaksu("pekka", "12345")
 
-        #self.pankki_mock.tilisiirto.assert_called_with('pekka', 2, '12345', '33333-44455', 3)
         self.assertEqual(self.viitegeneraattori_mock.uusi.call_count, 2)
 
     def test_poista_tuote_korista(self):
